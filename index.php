@@ -1,21 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>PHP</title>
 </head>
 <body>
 	<?php
-		if(empty($_POST)){
+		$arr = ["a", "b", "c"];
+		$langArray = ["ru"=>["Русский", "Английский"], "en" => ["Russian", "English"]];
 	?>
-	<form action = "" method="POST">
-		<input  name = "pass">
-		<input type = "submit">
+	<form action = "" method="GET">
+		<select name = "lang">
+			<option value = "en"><?=
+				$langArray[$_GET['lang']][1] ?? "English"
+			?></option>
+			<option value = "ru"><?=
+				$langArray[$_GET['lang']][0] ?? "Russian"
+			?></option>
+		</select>
+		<input name = "test" value = "<?= $_GET["test"] ?? "" ?>">
+		<input type = "submit" value="Сохранить">
+		<br>
+		<a href="?test=2345&lang=ru">click</a>
 	</form>
 	<?php
-		}else{
-			echo $_GET["pass"];
+		for($i = 0; $i < 10; $i++){
+			echo "<a href="."?test=". $i."&lang=ru".">click</a>" . "<br>";
+		}
+		foreach ($arr as $key => $elem) {
+			if($elem == $_GET['test']){
+				echo $key;	
+			}
 		}
 	?>
 </body>

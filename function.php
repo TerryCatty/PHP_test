@@ -3,6 +3,6 @@
 	if($_POST['pass'] != $pass){
 		echo "Wrong password!";
 	}else{
-		echo "Welcome!";
+		echo "Welcome!";	
 	}
-?>
+?>	
