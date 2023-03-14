@@ -6,31 +6,24 @@
 	<title>PHP</title>
 </head>
 <body>
-	<?php
-		$arr = ["a", "b", "c"];
-		$langArray = ["ru"=>["Русский", "Английский"], "en" => ["Russian", "English"]];
-	?>
 	<form action = "" method="GET">
-		<select name = "lang">
-			<option value = "en"><?=
-				$langArray[$_GET['lang']][1] ?? "English"
-			?></option>
-			<option value = "ru"><?=
-				$langArray[$_GET['lang']][0] ?? "Russian"
-			?></option>
-		</select>
-		<input name = "test" value = "<?= $_GET["test"] ?? "" ?>">
-		<input type = "submit" value="Сохранить">
-		<br>
-		<a href="?test=2345&lang=ru">click</a>
+		<input name = "a"><p>X^2</p><br>
+		<input name = "b"><p>X</p><br>
+		<input name = "c"><br><br>
+		<input type="submit">
 	</form>
 	<?php
-		for($i = 0; $i < 10; $i++){
-			echo "<a href="."?test=". $i."&lang=ru".">click</a>" . "<br>";
-		}
-		foreach ($arr as $key => $elem) {
-			if($elem == $_GET['test']){
-				echo $key;	
+		if(!empty($_GET)){
+			$D = ($_GET["b"] ** 2) - (4 * $_GET["a"] * $_GET["c"]);
+			if($D < 0){
+				echo "Нет корней";
+			}elseif ($D > 0) {
+				$x1 = (-1 * $_GET["b"] + sqrt($D));
+				$x2 = (-1 * $_GET["b"] - sqrt($D));
+				echo $x1 . "<br>" . $x2;
+			}else{
+				$x = (-1) * ($_GET["b"] / (2 *$_GET["a"]));
+				echo $x;
 			}
 		}
 	?>
