@@ -6,26 +6,25 @@
 	<title>PHP</title>
 </head>
 <body>
-	<form action = "" method="GET">
-		<input name = "a"><p>X^2</p><br>
-		<input name = "b"><p>X</p><br>
-		<input name = "c"><br><br>
+	<form action = "" method="POST">
+		<label>Username</label>
+		<input name="username">
+		<label>Password</label>
+		<input name = "password" type="password">
 		<input type="submit">
 	</form>
+
 	<?php
-		if(!empty($_GET)){
-			$D = ($_GET["b"] ** 2) - (4 * $_GET["a"] * $_GET["c"]);
-			if($D < 0){
-				echo "Нет корней";
-			}elseif ($D > 0) {
-				$x1 = (-1 * $_GET["b"] + sqrt($D));
-				$x2 = (-1 * $_GET["b"] - sqrt($D));
-				echo $x1 . "<br>" . $x2;
-			}else{
-				$x = (-1) * ($_GET["b"] / (2 *$_GET["a"]));
-				echo $x;
+		if(!empty($_POST["password"])){
+			$salt = 'ewgrgrw';
+			$saltInputPassword = $_POST['password'] . $salt;
+			if (password_verify($saltInputPassword, '$argon2i$v=19$m=65536,t=4,p=1$REhZODJhZi5XTVQ0NU1EUQ$wjxXzLB/lEj75QqUgQhpd9o2ZR37t9Rn0+wjBmDYqR8')) {
+			    echo "Password is correct!";
+			} else {
+			    echo "Password is incorrect!";
 			}
+
 		}
-	?>
+	 ?>
 </body>
 </html>
