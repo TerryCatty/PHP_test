@@ -15,7 +15,11 @@
 	</form>
 
 	<?php
-		if(!empty($_POST["password"])){
+		$arr = ['test.txt', 'test2.txt'];
+		for($i = 0; $i < count($arr); $i++){
+			echo file_get_contents($arr[$i]);
+		}
+		/*if(!empty($_POST["password"])){
 			$salt = 'ewgrgrw';
 			$saltInputPassword = $_POST['password'] . $salt;
 			if (password_verify($saltInputPassword, '$argon2i$v=19$m=65536,t=4,p=1$REhZODJhZi5XTVQ0NU1EUQ$wjxXzLB/lEj75QqUgQhpd9o2ZR37t9Rn0+wjBmDYqR8')) {
@@ -24,7 +28,7 @@
 			    echo "Password is incorrect!";
 			}
 
-		}
+		}*/
 	 ?>
 </body>
 </html>
